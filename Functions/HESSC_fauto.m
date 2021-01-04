@@ -145,9 +145,9 @@ inds = t.depthfirstiterator;
 k = 1;
 for i = 1:length(inds)
     if t.isleaf(inds(i))==1
-        k = k+1;
         idx = t.get(inds(i));
         Segs(idx) = k;
+        k = k+1;
     end
 end
 n_cluster = k;
