@@ -1,0 +1,10 @@
+function y = lasso_binary_clustering(X,tau,lambda)
+ns = size(X,2);
+y = zeros(1,ns);
+ind = randperm(ns,1);
+lambda=1/lambda;
+cost = lasso_cost(X(:,ind),X, lambda);
+[cost cI] = sort(cost);
+E = cumsum(cost);
+E = E./E(end);
+y(cI(1:min(find(E > tau)))) = 1;

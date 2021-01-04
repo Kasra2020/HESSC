@@ -1,0 +1,13 @@
+function fenorm=mypca(data,dim)
+[nr, nc, nb]=size(data);
+dataV=reshape(data,nr*nc,nb);
+dataMin = min(data(:));
+dataMax = max(data(:));
+datanorm=(dataV-dataMin)/(dataMax-dataMin);
+[~,~,EigenV1] = svd(datanorm,'econ');
+EigV=EigenV1(:,1:dim);
+Pcs=datanorm*EigV(:,1:dim);
+fe=reshape(Pcs,nr,nc,dim);
+feMin = min(fe(:));
+feMax = max(fe(:));
+fenorm=(fe-feMin)/(feMax-feMin);
