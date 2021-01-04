@@ -1,4 +1,4 @@
-function [CSmap, Processing_time] = HESSC_fauto(img, num_lev)
+function [CSmap, Processing_time, n_cluster] = HESSC_fauto(img, num_lev)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This code implements the automatic veriosn of HESSC, in case the number
@@ -150,6 +150,7 @@ for i = 1:length(inds)
         Segs(idx) = k;
     end
 end
+n_cluster = k;
 Processing_time = toc(tstart);
 CSmap = zeros(1,nr*nc);
 CSmap(1,mask) = Segs;
